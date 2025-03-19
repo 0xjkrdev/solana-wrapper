@@ -8,10 +8,10 @@ import { WalletMultiButton } from "@solana/wallet-adapter-react-ui"
 import { Connection, Transaction, LAMPORTS_PER_SOL, SystemProgram } from "@solana/web3.js"
 import {
     createAssociatedTokenAccountInstruction,
+    createCloseAccountInstruction,
     createSyncNativeInstruction,
     getAssociatedTokenAddress,
     NATIVE_MINT,
-    TOKEN_PROGRAM_ID,
 } from "@solana/spl-token"
 
 // Constants
@@ -60,10 +60,92 @@ export default function SolWrapper() {
 
     const handleWrapSol = async () => {
         if (!publicKey || !signTransaction) return
+
+        try {
+            setIsLoading(true)
+            const amountToWrap = Number.parseFloat(amount) * LAMPORTS_PER_SOL
+
+            // Create associated token account for wSOL if it doesn't exist
+            const associatedTokenAccount = await getAssociatedTokenAddress(NATIVE_MINT, publicKey)
+
+            const transaction = new Transaction()
+
+            // Check if the token account exists
+            const tokenAccountInfo = await connection.getAccountInfo(associatedTokenAccount)
+
+            if (!tokenAccountInfo) {
+                transaction.add(
+                    createAssociatedTokenAccountInstruction(publicKey, associatedTokenAccount, publicKey, NATIVE_MINT),
+                )
+            }
+
+            // Transfer SOL to the associated token account
+            transaction.add(
+                SystemProgram.transfer({
+                    fromPubkey: publicKey,
+                    toPubkey: associatedTokenAccount,
+                    lamports: amountToWrap,
+                }),
+            )
+
+            // Sync native instruction to update the token account
+            transaction.add(createSyncNativeInstruction(associatedTokenAccount))
+
+            // Sign and send transaction
+            transaction.feePayer = publicKey
+            transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash
+
+            const signedTransaction = await signTransaction(transaction)
+            const txid = await connection.sendRawTransaction(signedTransaction.serialize())
+
+            const { blockhash, lastValidBlockHeight } = await connection.getLatestBlockhash();
+            await connection.confirmTransaction(
+                { signature: txid, blockhash, lastValidBlockHeight },
+                "confirmed"
+            );
+
+            // Refresh balances
+            await fetchBalances()
+            setAmount("")
+        } catch (error) {
+            console.error("Error wrapping SOL:", error)
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     const handleUnwrapSol = async () => {
         if (!publicKey || !signTransaction) return
+        try {
+            setIsLoading(true)
+            const amountToUnwrap = Number.parseFloat(amount) * LAMPORTS_PER_SOL
+
+            // Get associated token account for wSOL
+            const associatedTokenAccount = await getAssociatedTokenAddress(NATIVE_MINT, publicKey)
+
+            // Create close account instruction to unwrap wSOL back to SOL
+            const transaction = new Transaction().add(
+                // This will close the account and send the SOL back to the owner
+                createCloseAccountInstruction(associatedTokenAccount, publicKey, publicKey, []),
+            )
+
+            // Sign and send transaction
+            transaction.feePayer = publicKey
+            transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash
+
+            const signedTransaction = await signTransaction(transaction)
+            const txid = await connection.sendRawTransaction(signedTransaction.serialize())
+
+            await connection.confirmTransaction(txid)
+
+            // Refresh balances
+            await fetchBalances()
+            setAmount("")
+        } catch (error) {
+            console.error("Error unwrapping wSOL:", error)
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     const handleSetHalf = () => {
