@@ -1,6 +1,6 @@
 # SOL Wrapper
 
-![SOL Wrapper](Demo_sol_wrapper.mp4) <!-- Replace with your project screenshot -->
+[![SOL Wrapper Demo](SolWrapperImg.png)](https://www.youtube.com/watch?v=XY-t28YO5nI) <!-- Replace with your project screenshot -->
 
 A modern, user-friendly application for wrapping and unwrapping SOL tokens on the Solana blockchain. SOL Wrapper allows users to easily convert between native SOL and wrapped SOL (wSOL), enabling seamless interaction with Solana's DeFi ecosystem.
 
