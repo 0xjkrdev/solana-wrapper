@@ -1,8 +1,12 @@
 # SOL Wrapper
 
-[![SOL Wrapper Demo](SolWrapperImg.png)](https://www.youtube.com/watch?v=XY-t28YO5nI) <!-- Replace with your project screenshot -->
+[![SOL Wrapper Demo](SolWrapperImg.png)](https://www.youtube.com/watch?v=bdQlmbcAlTk) <!-- Replace with your project screenshot -->
 
 A modern, user-friendly application for wrapping and unwrapping SOL tokens on the Solana blockchain. SOL Wrapper allows users to easily convert between native SOL and wrapped SOL (wSOL), enabling seamless interaction with Solana's DeFi ecosystem.
+
+SOL wrap transaction shown in the video: https://solscan.io/tx/2jNKHSCQPfZRhYZRSwbBj6dE1kNsocD9ihUGssRYZyDAsJv575JTek78QhAxTdEobStu98Z7XZrN5Mut2R2nF5iC
+wSOL unwrap transaction shown in the video: https://solscan.io/tx/25sACVE2J38euHPsQubYz2VYk4dF3qfKDu9zDLsZcU2p2ADhnVrbL7fVoZqZ15DwsaXKVxf7J6kewJana1kpVciT
+
 
 ## 🌟 Features
 
@@ -227,7 +231,6 @@ This project is licensed under the MIT License
 - [Tailwind CSS](https://tailwindcss.com/) - For the styling framework
 - [Vercel](https://vercel.com/) - For hosting
 - [Sentry](https://sentry.io/) - For error tracking
-- All contributors who have helped this project grow
 
 
 ## 📧 Contact
