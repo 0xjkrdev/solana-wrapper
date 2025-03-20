@@ -26,7 +26,7 @@ export default function DocsPage() {
                     <section className="bg-[#1e2235] rounded-lg p-6 shadow-lg">
                         <h2 className="text-2xl font-semibold text-white mb-4">Why Wrap SOL?</h2>
                         <p className="text-gray-300 mb-4">
-                            Native SOL is the blockchain's currency used for transaction fees and staking. However, many DeFi
+                            Native SOL is the blockchain&apos;s currency used for transaction fees and staking. However, many DeFi
                             applications on Solana require tokens to follow the SPL token standard for compatibility with their
                             protocols.
                         </p>
@@ -47,10 +47,10 @@ export default function DocsPage() {
                         <div className="mb-6">
                             <h3 className="text-xl font-medium text-white mb-3">Wrapping SOL to wSOL</h3>
                             <ol className="list-decimal list-inside text-gray-300 space-y-2">
-                                <li>Connect your Solana wallet by clicking the "Connect Wallet" button</li>
+                                <li>Connect your Solana wallet by clicking the &quot;Connect Wallet&quot; button</li>
                                 <li>Ensure you have SOL in your wallet</li>
-                                <li>Enter the amount of SOL you want to wrap, or use the "HALF" or "MAX" buttons</li>
-                                <li>Click the "Wrap SOL" button</li>
+                                <li>Enter the amount of SOL you want to wrap, or use the &quot;HALF&quot; or &quot;MAX&quot; buttons</li>
+                                <li>Click the &quot;Wrap SOL&quot; button</li>
                                 <li>Approve the transaction in your wallet</li>
                                 <li>Wait for the transaction to be confirmed</li>
                             </ol>
@@ -59,10 +59,10 @@ export default function DocsPage() {
                         <div>
                             <h3 className="text-xl font-medium text-white mb-3">Unwrapping wSOL to SOL</h3>
                             <ol className="list-decimal list-inside text-gray-300 space-y-2">
-                                <li>Connect your Solana wallet by clicking the "Connect Wallet" button</li>
-                                <li>Click "Switch to Unwrap" to change to unwrap mode</li>
-                                <li>Enter the amount of wSOL you want to unwrap, or use the "HALF" or "MAX" buttons</li>
-                                <li>Click the "Unwrap wSOL" button</li>
+                                <li>Connect your Solana wallet by clicking the &quot;Connect Wallet&quot; button</li>
+                                <li>Click &quot;Switch to Unwrap&quot; to change to unwrap mode</li>
+                                <li>Enter the amount of wSOL you want to unwrap, or use the &quot;HALF&quot; or &quot;MAX&quot; buttons</li>
+                                <li>Click the &quot;Unwrap wSOL&quot; button</li>
                                 <li>Approve the transaction in your wallet</li>
                                 <li>Wait for the transaction to be confirmed</li>
                             </ol>
@@ -82,7 +82,7 @@ export default function DocsPage() {
                         </ul>
                         <p className="text-gray-300 mb-4">When wrapping SOL, the application:</p>
                         <ol className="list-decimal list-inside text-gray-300 space-y-2 mb-4">
-                            <li>Creates an associated token account for wSOL if it doesn't exist</li>
+                            <li>Creates an associated token account for wSOL if it doesn&apos;t exist</li>
                             <li>Transfers SOL to the token account</li>
                             <li>Syncs the native account to update the token balance</li>
                         </ol>
@@ -117,7 +117,7 @@ export default function DocsPage() {
                             <div>
                                 <h3 className="text-lg font-medium text-white mb-2">Why do I need to leave some SOL when wrapping?</h3>
                                 <p className="text-gray-300">
-                                    You need to keep a small amount of SOL in your wallet to pay for transaction fees. The "MAX" button
+                                    You need to keep a small amount of SOL in your wallet to pay for transaction fees. The &quot;MAX&quot; button
                                     automatically reserves 0.01 SOL for this purpose.
                                 </p>
                             </div>

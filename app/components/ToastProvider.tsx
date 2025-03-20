@@ -9,6 +9,7 @@ interface Toast {
     id: string
     message: string
     type: ToastType
+    isExiting?: boolean
 }
 
 interface ToastContextType {
@@ -33,7 +34,11 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     }
 
     const hideToast = (id: string) => {
-        setToasts((prev) => prev.map((toast) => (toast.id === id ? { ...toast, isExiting: true } : toast)))
+        setToasts((prev) =>
+            prev.map((toast) =>
+                toast.id === id ? { ...toast, isExiting: true } : toast
+            )
+        )
 
         // Remove from state after animation completes
         setTimeout(() => {
@@ -61,7 +66,9 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                 {toasts.map((toast) => (
                     <div
                         key={toast.id}
-                        className={`transform transition-all duration-500 ease-in-out ${(toast as any).isExiting ? "translate-x-full opacity-0" : "translate-x-0"
+                        className={`transform transition-all duration-500 ease-in-out ${toast.isExiting
+                                ? "translate-x-full opacity-0"
+                                : "translate-x-0"
                             }`}
                     >
                         <div
@@ -74,9 +81,13 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                                             : "bg-blue-600/90 text-white border-l-4 border-blue-800"
                                 }`}
                         >
-                            <div className="flex-shrink-0 mr-3">{getToastIcon(toast.type)}</div>
+                            <div className="flex-shrink-0 mr-3">
+                                {getToastIcon(toast.type)}
+                            </div>
                             <div className="flex-1 mr-2">
-                                <p className="text-sm font-medium">{toast.message}</p>
+                                <p className="text-sm font-medium">
+                                    {toast.message}
+                                </p>
                             </div>
                             <button
                                 onClick={() => hideToast(toast.id)}
@@ -99,4 +110,3 @@ export function useToast() {
     }
     return context
 }
-

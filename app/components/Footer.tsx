@@ -1,6 +1,5 @@
 import { Heart } from "lucide-react"
 import Link from "next/link"
-import { AiFillGithub } from 'react-icons/ai'
 import { TbBrandNextjs } from 'react-icons/tb'
 export default function Footer() {
     return (
