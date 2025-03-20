@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui"
+import { Package } from "lucide-react"
 
 export default function Navbar() {
     const [isConnected, setIsConnected] = useState(false)
@@ -15,6 +16,8 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto flex justify-between items-center">
                 {/* Logo/Brand */}
                 <div className="flex items-center">
+                    <Package size={30} className="text-[#d4b848] mr-2" />
+
                     <Link href="/" className="text-xl font-bold text-gray-100">SOL WRAPPER</Link>
                 </div>
 

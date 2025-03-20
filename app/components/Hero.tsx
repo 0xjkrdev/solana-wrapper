@@ -1,4 +1,4 @@
-import { CircleDollarSign, ArrowRight } from "lucide-react"
+import { Package, ArrowRight } from "lucide-react"
 import Link from "next/link";
 export default function Hero() {
     return (
@@ -9,7 +9,7 @@ export default function Hero() {
                     <div className="relative">
                         <div className="absolute -top-10 -left-10 w-20 h-20 bg-[#d4b848] opacity-10 rounded-full blur-xl"></div>
                         <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-[#d4b848] opacity-10 rounded-full blur-xl"></div>
-                        <CircleDollarSign size={80} className="text-[#d4b848]" />
+                        <Package size={80} className="text-[#d4b848]" />
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@ export default function Hero() {
                         Start Wrapping
                         <ArrowRight className="h-5 w-5" />
                     </Link>
-                    <Link href="/" className="bg-[#262a3e] hover:bg-[#2a2e45] text-gray-200 font-medium py-3 px-8 rounded-lg transition-colors text-lg border border-[#3a3e55]">
+                    <Link href="/docs" className="bg-[#262a3e] hover:bg-[#2a2e45] text-gray-200 font-medium py-3 px-8 rounded-lg transition-colors text-lg border border-[#3a3e55]">
                         Learn More
                     </Link>
                 </div>

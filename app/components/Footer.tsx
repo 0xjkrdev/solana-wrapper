@@ -39,16 +39,6 @@ export default function Footer() {
                                 <TbBrandNextjs size={30} />
                             </Link>
                         </div>
-
-                        {/* GitHub Link */}
-                        <Link
-                            href="https://github.com/0xjkrdev"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-300 hover:text-white transition-colors"
-                        >
-                            <AiFillGithub size={30} />
-                        </Link>
                     </div>
                 </div>
 
